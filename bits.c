@@ -237,5 +237,16 @@ int replaceByte(int x, int n, int c) {
  *   Rating: 4
  */
 int bitParity(int x) {
-  return 2;
+   //xor the first 16 bits with second 16 bits
+   x ^= x >> 16;
+   //xor the first 8 bits with second 8 bits
+   x ^= x >> 8;
+   //xor the first 4 bits with second 4 bits
+   x ^= x >> 4;
+   //xor the first 4 bits with second 4 bits
+   x ^= x >> 2;
+   //xor the first 4 bits with second 4 bits
+   x ^= x >> 1;
+   //Returns the right most bit
+   return x & 1;
 }
