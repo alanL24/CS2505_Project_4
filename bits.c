@@ -178,7 +178,14 @@ NOTES:
  *   Rating: 1
  */
 int isTmin(int x) {
-  return 2;
+   //Preforms the twos compliments
+   int negative_x = ~x + 1;
+   //Checks if the twos compliment is the negative value of x
+   int compliment = !(x ^ negative_x);
+   //Checks if x is not zero
+   int not_zero = !(!x);
+   //Returns if x is its compliment and not zero
+   return compliment & not_zero;
 }
 //2
 /* 
