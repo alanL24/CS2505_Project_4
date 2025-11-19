@@ -213,7 +213,20 @@ int oddBits(void) {
  *   Rating: 3
  */
 int addOK(int x, int y) {
-  return 2;
+   //Gets the sum of x and y
+   int sum = x + y;
+   //Gets the left most bit of x
+   int sign_x = x >> 31;
+   //Gets the left most bit of y
+   int sign_y = y >> 31;
+   //Gets the left most bit of the sum
+   int sign_sum = sum >> 31;
+   //Checks if x and y have the same sign
+   int same_input_signs = !(sign_x ^ sign_y);
+   //Checks if the sum and x has different signs
+   int diff_output_sign = sign_x ^ sign_sum;
+   //Returns if the x and y have the same sign and is different from the sign of the sum
+   return !(same_input_signs & diff_output_sign);
 }
 //5
 /* 
@@ -243,9 +256,9 @@ int bitParity(int x) {
    x ^= x >> 8;
    //xor the first 4 bits with second 4 bits
    x ^= x >> 4;
-   //xor the first 4 bits with second 4 bits
+   //xor the first 2 bits with second 2 bits
    x ^= x >> 2;
-   //xor the first 4 bits with second 4 bits
+   //xor the first bits with the second bits
    x ^= x >> 1;
    //Returns the right most bit
    return x & 1;
