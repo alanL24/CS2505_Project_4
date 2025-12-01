@@ -204,7 +204,7 @@ int isTmin(int x) {
  *   Rating: 2
  */
 int implication(int x, int y) {
-    return 2;
+    return (!x) | y;
 }
 //3
 /* 
@@ -214,7 +214,9 @@ int implication(int x, int y) {
  *   Rating: 2
  */
 int oddBits(void) {
-  return 2;
+  int x = 0xAA;
+  x= x|(x<<8);
+  return x | (x<<16);
 }
 //4
 /* 
@@ -252,7 +254,10 @@ int addOK(int x, int y) {
  *   Rating: 3
  */
 int replaceByte(int x, int n, int c) {
-  return 2;
+  int shift = n << 3;
+  int mask = ~(0xFF << shift);
+  return (x&mask) | (c << shift);
+  
 }
 //6
 /*
