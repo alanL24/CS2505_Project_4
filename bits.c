@@ -1,5 +1,6 @@
 /*
 Alan Le (alan24)
+Anderson Tam (andersontam8)
 
 */
 
@@ -204,6 +205,9 @@ int isTmin(int x) {
  *   Rating: 2
  */
 int implication(int x, int y) {
+   // returns 0 if x = 1 and y = 0 
+   //returns 1 if x =1 and y = 1 
+   // returns 1 if x = 0 and y = 1 
     return (!x) | y;
 }
 //3
@@ -214,8 +218,11 @@ int implication(int x, int y) {
  *   Rating: 2
  */
 int oddBits(void) {
+  //using 0xAA as it already has odd number bits set to 1  
   int x = 0xAA;
+  // shift it 8 bytes and or it to get all odd number bits to be 1 again
   x= x|(x<<8);
+  // return the word after making it 32 bits by or it with after another 16 shift bit 
   return x | (x<<16);
 }
 //4
@@ -253,9 +260,13 @@ int addOK(int x, int y) {
  *   Max ops: 10
  *   Rating: 3
  */
-int replaceByte(int x, int n, int c) {
+int replaceByte(int x, int n, int c) {\
+  // shift is  n << 3 as 1 byte is 8 bits 
   int shift = n << 3;
+  // get rid of the byte that you are trying to do by taking the negation of 0xFF to keep
+  // everything except the byte you are changing
   int mask = ~(0xFF << shift);
+  // use the mask and the or the byte into the location that you want it with the shift
   return (x&mask) | (c << shift);
   
 }
