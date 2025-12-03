@@ -206,7 +206,7 @@ int isTmin(int x) {
  */
 int implication(int x, int y) {
    // returns 0 if x = 1 and y = 0 
-   //returns 1 if x =1 and y = 1 
+   //returns 1 if x = 1 and y = 1 
    // returns 1 if x = 0 and y = 1 
     return (!x) | y;
 }
@@ -265,9 +265,10 @@ int replaceByte(int x, int n, int c) {\
   int shift = n << 3;
   // get rid of the byte that you are trying to do by taking the negation of 0xFF to keep
   // everything except the byte you are changing
-  int mask = ~(0xFF << shift);
+  int mask = 0xFF << shift;
+  int maskout = ~mask;
   // use the mask and the or the byte into the location that you want it with the shift
-  return (x&mask) | (c << shift);
+  return (x&maskout) | ((c << shift) & mask);
   
 }
 //6
